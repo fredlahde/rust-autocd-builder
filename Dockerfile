@@ -1,9 +1,9 @@
-FROM rust:latest as builder
+FROM rustlang/rust:nightly as builder
 
 COPY . .
 
 RUN cargo build --release
 
-FROM rust:latest
+FROM rustlang/rust:nightly
 
 COPY --from=builder /target/release/rust-autocd-builder /bin
